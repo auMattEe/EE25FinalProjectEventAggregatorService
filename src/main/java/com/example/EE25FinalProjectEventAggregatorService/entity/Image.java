@@ -20,6 +20,6 @@ public class Image {
 
     @NotNull
     @NonNull
-    @Column(name = "data", nullable = false)
-    private byte[] data;
+    @Column(name = "image", nullable = false)
+    private byte[] image;
 }
