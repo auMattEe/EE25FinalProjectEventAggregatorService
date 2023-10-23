@@ -9,5 +9,4 @@ public class Ee25FinalProjectEventAggregatorServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Ee25FinalProjectEventAggregatorServiceApplication.class, args);
 	}
-
 }
