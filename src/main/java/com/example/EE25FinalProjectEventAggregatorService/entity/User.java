@@ -20,4 +20,13 @@ public class User {
     @NotNull
     @Column(name = "password", nullable = false)
     private String password;
+    @NotNull
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+    @NotNull
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+    @NotNull
+    @Column(name = "email", nullable = false)
+    private String email;
 }
