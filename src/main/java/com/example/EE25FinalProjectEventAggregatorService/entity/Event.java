@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -25,7 +24,7 @@ public class Event {
     private LocalDateTime eventStart;
     @NotNull
     @Column(name = "event_duration", nullable = false)
-    private LocalTime eventDuration;
+    private Float eventDuration;
     @NotNull
     @Column(name = "address", nullable = false)
     private String address;
