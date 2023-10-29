@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Integer id;
+    private int id;
     @NotNull
     @Column(name = "username", nullable = false)
     private String username;

@@ -14,7 +14,7 @@ public class UserEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Integer id;
+    private int id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

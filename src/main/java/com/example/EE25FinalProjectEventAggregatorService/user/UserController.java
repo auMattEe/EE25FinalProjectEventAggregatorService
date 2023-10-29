@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @DeleteMapping("/userdelete")
-    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
+    public ResponseEntity<?> deleteEvent(@RequestParam int id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

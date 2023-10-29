@@ -9,5 +9,5 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 
     boolean existsByUsernameOrEmail(String username, String email);
 
-    void deleteUserById(Integer id);
+    void deleteUserById(int id);
 }

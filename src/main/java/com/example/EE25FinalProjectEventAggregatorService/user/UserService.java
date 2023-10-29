@@ -34,7 +34,7 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public void deleteUser(Integer id) {
+    public void deleteUser(int id) {
         userRepo.deleteUserById(id);
     }
 }

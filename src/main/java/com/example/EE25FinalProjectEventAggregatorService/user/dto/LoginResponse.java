@@ -13,6 +13,6 @@ public class LoginResponse implements Serializable {
     private String username;
     private String password;
 
-    public LoginResponse(String loginSuccessful, Integer id, String username) {
+    public LoginResponse(String loginSuccessful, int id, String username) {
     }
 }
