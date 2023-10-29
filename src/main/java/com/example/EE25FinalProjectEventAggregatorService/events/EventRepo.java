@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface EventRepo extends JpaRepository<Event, Integer> {
 
     Optional<Event> findEventById(Integer id);
+
+    void deleteEvenetById(Integer id);
 }

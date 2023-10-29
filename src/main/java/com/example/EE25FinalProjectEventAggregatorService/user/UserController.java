@@ -1,5 +1,6 @@
 package com.example.EE25FinalProjectEventAggregatorService.user;
 
+import com.example.EE25FinalProjectEventAggregatorService.entity.Event;
 import com.example.EE25FinalProjectEventAggregatorService.entity.User;
 import com.example.EE25FinalProjectEventAggregatorService.user.dto.LoginRequest;
 import com.example.EE25FinalProjectEventAggregatorService.user.dto.LoginResponse;
@@ -7,12 +8,10 @@ import com.example.EE25FinalProjectEventAggregatorService.user.dto.RegistrationR
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/events")
 public class UserController {
 
     @Resource
@@ -47,5 +46,17 @@ public class UserController {
         } else {
             return new ResponseEntity<>("Registration failed", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PutMapping("/userupdate")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User updatedUser = userService.updateUser(user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/userdelete")
+    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

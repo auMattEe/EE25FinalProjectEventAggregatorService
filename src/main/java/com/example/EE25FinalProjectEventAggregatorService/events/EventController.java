@@ -22,8 +22,26 @@ public class EventController {
     }
 
     @GetMapping("/event")
-    public ResponseEntity<Event> getEmployeeById(@RequestParam Integer id) {
-        Event employee = eventService.findEventById(id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+    public ResponseEntity<Event> getEventById(@RequestParam Integer id) {
+        Event event = eventService.findEventById(id);
+        return new ResponseEntity<>(event, HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
+        Event newEvent = eventService.createEvent(event);
+        return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
+        Event updatedEvent = eventService.updateEvent(event);
+        return new ResponseEntity<>(updatedEvent, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
+        eventService.deleteEvent(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
