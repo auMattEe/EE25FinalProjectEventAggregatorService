@@ -1,10 +1,12 @@
 package com.example.EE25FinalProjectEventAggregatorService.user;
 
 import com.example.EE25FinalProjectEventAggregatorService.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+    @Autowired
     private UserRepo userRepo;
 
     public User login(String username, String password) {
@@ -26,5 +28,13 @@ public class UserService {
 
     private boolean isUsernameOrEmailAlreadyExists(String username, String email) {
         return userRepo.existsByUsernameOrEmail(username, email);
+    }
+
+    public User updateUser(User user) {
+        return userRepo.save(user);
+    }
+
+    public void deleteUser(Integer id) {
+        userRepo.deleteUserById(id);
     }
 }

@@ -8,4 +8,6 @@ public interface UserRepo extends JpaRepository<User, Integer> {
     User findUserByUsernameAndPassword(String username, String password);
 
     boolean existsByUsernameOrEmail(String username, String email);
+
+    void deleteUserById(Integer id);
 }

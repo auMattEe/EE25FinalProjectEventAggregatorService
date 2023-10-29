@@ -13,9 +13,10 @@ import java.util.List;
 public class EventService {
 
     private final EventRepo eventRepo;
+
     @Autowired
-    public EventService(EventRepo employeeRepo) {
-        this.eventRepo = employeeRepo;
+    public EventService(EventRepo eventRepo) {
+        this.eventRepo = eventRepo;
     }
 
     public List<Event> findAllEvents() {
@@ -25,5 +26,17 @@ public class EventService {
     public Event findEventById(Integer id) {
         return eventRepo.findEventById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
+    }
+
+    public Event createEvent(Event event) {
+        return eventRepo.save(event);
+    }
+
+    public Event updateEvent(Event event) {
+        return eventRepo.save(event);
+    }
+
+    public void deleteEvent(Integer id) {
+        eventRepo.deleteEvenetById(id);
     }
 }
