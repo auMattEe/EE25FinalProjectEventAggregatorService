@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/events")
 public class UserController {
@@ -17,7 +20,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
 
         User user = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
@@ -31,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegistrationRequest registrationRequest) {
+    public ResponseEntity<Map<String, String>> registerUser(@RequestBody RegistrationRequest registrationRequest) {
         User newUser = new User();
         newUser.setUsername(registrationRequest.getUsername());
         newUser.setPassword(registrationRequest.getPassword());
@@ -41,10 +44,13 @@ public class UserController {
 
         boolean registrationResult = userService.registerUser(newUser);
 
+        Map<String, String> response = new HashMap<>();
         if (registrationResult) {
-            return new ResponseEntity<>("Registration successful", HttpStatus.OK);
+            response.put("message", "Registration successful");
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Registration failed", HttpStatus.BAD_REQUEST);
+            response.put("message", "Registration failed");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -55,7 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping("/userdelete")
-    public ResponseEntity<?> deleteEvent(@RequestParam int id) {
+    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

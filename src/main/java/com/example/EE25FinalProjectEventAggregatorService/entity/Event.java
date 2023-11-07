@@ -14,21 +14,16 @@ import java.time.LocalDateTime;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private int id;
-    @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
-    @NotNull
-    @Column(name = "event_start", nullable = false)
-    private LocalDateTime eventStart;
-    @NotNull
-    @Column(name = "event_duration", nullable = false)
-    private Float eventDuration;
-    @NotNull
-    @Column(name = "address", nullable = false)
+    @Column(name = "event_start")
+    private String eventStart;
+    @Column(name = "event_duration")
+    private String eventDuration;
+    @Column(name = "address")
     private String address;
-    @NotNull
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 }
