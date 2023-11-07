@@ -10,9 +10,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginResponse implements Serializable {
+    private Integer id;
     private String username;
-    private String password;
 
-    public LoginResponse(String loginSuccessful, Integer id, String username) {
+    public LoginResponse(String message, Integer id, String username) {
+        this.id = id;
+        this.username = username;
     }
 }
