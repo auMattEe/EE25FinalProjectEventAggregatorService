@@ -22,7 +22,7 @@ public class EventController {
     }
 
     @GetMapping("/event")
-    public ResponseEntity<Event> getEventById(@RequestParam Integer id) {
+    public ResponseEntity<Event> getEventById(@RequestParam int id) {
         Event event = eventService.findEventById(id);
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
@@ -40,7 +40,7 @@ public class EventController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteEvent(@RequestParam Integer id) {
+    public ResponseEntity<?> deleteEvent(@RequestParam int id) {
         eventService.deleteEvent(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

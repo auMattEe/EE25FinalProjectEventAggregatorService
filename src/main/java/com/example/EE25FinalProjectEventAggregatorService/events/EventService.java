@@ -23,7 +23,7 @@ public class EventService {
         return eventRepo.findAll();
     }
 
-    public Event findEventById(Integer id) {
+    public Event findEventById(int id) {
         return eventRepo.findEventById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
     }
@@ -37,6 +37,6 @@ public class EventService {
     }
 
     public void deleteEvent(Integer id) {
-        eventRepo.deleteEvenetById(id);
+        eventRepo.deleteEventById(id);
     }
 }

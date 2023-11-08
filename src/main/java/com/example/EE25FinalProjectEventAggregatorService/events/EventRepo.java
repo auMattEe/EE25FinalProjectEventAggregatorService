@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface EventRepo extends JpaRepository<Event, Integer> {
 
-    Optional<Event> findEventById(Integer id);
+    Optional<Event> findEventById(int id);
 
-    void deleteEvenetById(Integer id);
+    void deleteEventById(int id);
 }
