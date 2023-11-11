@@ -1,12 +1,17 @@
 package com.example.EE25FinalProjectEventAggregatorService.events;
 
 import com.example.EE25FinalProjectEventAggregatorService.entity.Event;
+import com.example.EE25FinalProjectEventAggregatorService.entity.User;
+import com.example.EE25FinalProjectEventAggregatorService.events.dto.CreatedEvent;
+import com.example.EE25FinalProjectEventAggregatorService.user.dto.RegistrationRequest;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/events")
@@ -28,9 +33,24 @@ public class EventController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
-        Event newEvent = eventService.createEvent(event);
-        return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
+    public ResponseEntity<Map<String, String>> addEvent(@RequestBody CreatedEvent createdEvent) {
+        Event newEvent = new Event();
+        newEvent.setName(createdEvent.getName());
+        newEvent.setEventStart(createdEvent.getEventStart());
+        newEvent.setEventDuration(createdEvent.getEventDuration());
+        newEvent.setAddress(createdEvent.getAddress());
+        newEvent.setDescription(createdEvent.getDescription());
+
+        boolean creationResult = eventService.createEvent(newEvent);
+
+        Map<String, String> response = new HashMap<>();
+        if (creationResult) {
+            response.put("message", "Event created successful");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.put("message", "Creating event failed");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/update")

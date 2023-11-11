@@ -28,8 +28,13 @@ public class EventService {
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
     }
 
-    public Event createEvent(Event event) {
-        return eventRepo.save(event);
+    public boolean createEvent(Event event) {
+        try {
+            eventRepo.save(event);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public Event updateEvent(Event event) {

@@ -21,10 +21,10 @@ public class Event {
     private String name;
     @NotNull
     @Column(name = "event_start", nullable = false)
-    private LocalDateTime eventStart;
+    private String eventStart;
     @NotNull
     @Column(name = "event_duration", nullable = false)
-    private Float eventDuration;
+    private String eventDuration;
     @NotNull
     @Column(name = "address", nullable = false)
     private String address;
