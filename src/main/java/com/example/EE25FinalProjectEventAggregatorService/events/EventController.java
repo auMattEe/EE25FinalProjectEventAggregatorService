@@ -53,12 +53,6 @@ public class EventController {
         }
     }
 
-//    @PostMapping("/create")
-//    public ResponseEntity<Event> addEvent(@RequestBody Event event) {
-//        Event newEvent = eventService.createEvent(event);
-//        return new ResponseEntity<>(newEvent, HttpStatus.CREATED);
-//    }
-
     @PutMapping("/update")
     public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
         Event updatedEvent = eventService.updateEvent(event);

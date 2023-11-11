@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
@@ -14,16 +12,21 @@ import java.time.LocalDateTime;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(updatable = false)
+    @Column(nullable = false, updatable = false)
     private int id;
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "event_start")
+    @NotNull
+    @Column(name = "event_start", nullable = false)
     private String eventStart;
-    @Column(name = "event_duration")
+    @NotNull
+    @Column(name = "event_duration", nullable = false)
     private String eventDuration;
-    @Column(name = "address")
+    @NotNull
+    @Column(name = "address", nullable = false)
     private String address;
-    @Column(name = "description")
+    @NotNull
+    @Column(name = "description", nullable = false)
     private String description;
 }
