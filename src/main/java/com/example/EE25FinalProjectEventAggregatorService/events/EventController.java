@@ -32,6 +32,12 @@ public class EventController {
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
 
+//    @GetMapping("/events/attending/{userId}")
+//    public ResponseEntity<List<Event>> getAttendingEvents(@PathVariable int id) {
+//        List<Event> attendingEvents = eventService.getAttendingEvents(id);
+//        return new ResponseEntity<>(attendingEvents, HttpStatus.OK);
+//    }
+
     @PostMapping("/create")
     public ResponseEntity<Map<String, String>> addEvent(@RequestBody CreatedEvent createdEvent) {
         Event newEvent = new Event();

@@ -44,4 +44,8 @@ public class EventService {
     public void deleteEvent(int id) {
         eventRepo.deleteEvenetById(id);
     }
+
+//    public List<Event> getAttendingEvents(int id) {
+//        return eventRepo.findAttendingEventsByUserId(id);
+//    }
 }
